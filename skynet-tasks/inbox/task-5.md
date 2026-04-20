@@ -1,14 +1,14 @@
 ---
 task_id: 5
-agent: nex
-priority: 2
-task_type: general
-created_at: 2026-04-19T07:12:19.045Z
+agent: claude_code
+priority: 1
+task_type: code
+created_at: 2026-04-20T11:35:23.849Z
 ---
 
-# בדיקת Nex Bridge — נא החזר שלום מהטרמינל שלי
+# API hardening · zod validation + JSDoc לסמנטיקת priority
 
-זו משימת פתיחה כדי לוודא שהגשר עובד. כתוב קובץ outbox/task-<id>.md עם status: done
+הקוד משתמש ב-ORDER BY priority ASC (1 = דחוף, 3 = נמוך) — הפוך מהאינטואיציה של רוב המפתחים. (1) JSDoc מפורט על הנדלר של POST /api/tasks ב-server/routes.ts שמסביר את הסמנטיקה. (2) zod refinement על priority: חייב להיות integer בטווח 1-3, הודעת שגיאה מסבירה '1=urgent, 2=normal, 3=low'. (3) אם מישהו שולח priority מחוץ לטווח — 400 עם ההודעה הזו. (4) ולידציה קיימת גם ב-PATCH.
 
 
 ## Response instructions
